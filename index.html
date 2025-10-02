@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactiva</title>
+
+    <link href="assets/css/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <div id="title">
+            <h1>Medidas de control <span>de seguridad y salud</span></h1>
+        </div>
+        <div id="content">
+            <div id="col1">
+                <div id="cinta">
+                    <button id="cinta-top-btn"></button>
+                    <div id="cinta-wrap">
+                        <div id="cinta-wrapper">
+                            
+                        </div>
+                        <div id="cinta-wrap-sombra-1"></div>
+                        <div id="cinta-wrap-sombra-2"></div>
+                    </div>
+                    <button id="cinta-bottom-btn"></button>
+                    <div id="cinta-tooltip" class="cinta-tooltip-off">
+                        <p id="cinta-tooltip-txt">Tooltip</p>
+                    </div>
+                </div>
+            </div>
+            <div id="col2">
+                <div id="picture">
+                    <div id="picture-img" class="picture-img-on">
+                        <img src="" />
+                    </div>
+                    <!--<button id="picture-info-btn"></button>-->
+                    <div id="modal" class="modal-off">
+                        <div id="modal-box">
+                            <div id="modal-header">
+                                <p><span>Peligro: </span> Accidentes de tránsito</p>
+                            </div>
+                            <div id="modal-body">
+                                <div id="modal-body-txt1">
+                                    <p><span>Riesgo: </span>Lesiones graves o fatales debido a accidentes vehículos.</p>
+                                </div>
+                                <div id="modal-body-txt2">
+                                    <p>Medidas de control:</p>
+                                    <ul>
+                                        <li>Vehículos no autorizados y capacitación en conducción segura.</li>
+                                        <li>Uso de equipos de protección personal (EPP).</li>
+                                        <li>Supervisión de rutas de acceso.</li>
+                                    </ul>
+                                </div>
+                                <div id="modal-body-txt3">
+                                    <p><span>👤 Responsable:</span> Analista SST.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="botones">
+        <button id="next-tema-btn"></button>
+        <button id="sonido-btn" class="sonido-off"></button>
+    </div>
+
+    <div id="loader" class="loader-on">
+        <div id="loader-img"></div>
+        <div id="loader-bar">
+            <div id="loader-bar2"></div>
+        </div>
+    </div>
+
+    <script src="assets/data.js"></script>
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/scroll.js"></script>
+
+    <script>
+        
+        
+        window.onload = function(){
+            loadItems()
+        }
+    </script>
+</body>
+</html>
