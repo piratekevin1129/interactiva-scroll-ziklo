@@ -42,6 +42,7 @@ var audios_fotos = []
 
 function loadItems(){
     if(load_item==items_data.length){
+        getE('sonido-btn').setAttribute('onclick','clickSonido()')
         setCintaItems()
         activateSCroll()
         getE('cinta-wrap').addEventListener('mousemove', moveScroll, true)
@@ -83,6 +84,7 @@ var over_item = -1
 function overCintaItem(ite){
     over_item = ite
     getE('cinta-tooltip-txt').innerHTML = items_data[ite].peligro
+    over_mp3.play()
 }
 
 function outCintaItem(ite){
@@ -101,6 +103,7 @@ function clickCintaItem(ite){
         audios_fotos[click_item].pause()
         getE('modal').className = 'modal-off'
         getE('picture-img').className = 'picture-img-off'
+        click_mp3.play()
 
         animacion_click_item = setTimeout(function(){
             clearTimeout(animacion_click_item)
@@ -109,6 +112,16 @@ function clickCintaItem(ite){
             click_item = ite
             getE('picture-img').getElementsByTagName('img')[0].src = 'assets/fotos/'+items_data[ite].id+'.jpg'
             getE('cinta-item-'+items_data[ite].id).className = 'cinta-item-active'
+
+            getE('modal-body-txt1').innerHTML = '<p><span>Riesgo: </span>'+items_data[ite].riesgo+'</p>'
+            var txt2 = "<p>Medidas de control:</p>"
+            txt2+='<ul>'
+            for(i = 0;i<items_data[ite].medidas.length;i++){
+                txt2+='<li>'+items_data[ite].medidas[i]+'</li>'
+            }
+            txt2+='</ul>'
+            getE('modal-body-txt2').innerHTML = txt2
+            getE('modal-body-txt1').innerHTML = '<p><span>👤 Responsable:</span> '+items_data[i].responsable+'</p>'
     
             getE('modal').className = 'modal-on'
             getE('picture-img').className = 'picture-img-on'
@@ -116,6 +129,7 @@ function clickCintaItem(ite){
 
             audios_fotos[ite].currentTime = 0
             audios_fotos[ite].play()
+            transicion_mp3.play()
         },1000)
     }
 }

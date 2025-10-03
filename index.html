@@ -7,6 +7,7 @@
 
     <link href="assets/css/fonts.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -66,7 +67,7 @@
     </div>
 
     <div id="botones">
-        <button id="next-tema-btn"></button>
+        <button id="next-tema-btn" class="next-tema-off"></button>
         <button id="sonido-btn" class="sonido-off"></button>
     </div>
 
@@ -83,10 +84,41 @@
     <script src="assets/js/scroll.js"></script>
 
     <script>
-        
+        var background_mp3 = null;
+        var click_mp3 = null;
+        var over_mp3 = null;
+        var transicion_mp3 = null;
         
         window.onload = function(){
-            loadItems()
+            loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data){
+                background_mp3 = data
+                background_mp3.loop = true
+                background_mp3.volume = 0.2
+                loadTrack({src: 'assets/sounds/click.mp3', callBack: function(data){
+                    click_mp3 = data
+                    loadTrack({src: 'assets/sounds/over.mp3', callBack: function(data){
+                        over_mp3 = data
+                        loadTrack({src: 'assets/sounds/transicion.mp3', callBack: function(data){
+                            transicion_mp3 = data
+                            
+                            loadItems()
+                        }})
+                    }})
+                }})
+            }})
+        }
+
+        var toggle_sonido = false
+        function clickSonido(){
+            if(!toggle_sonido){
+                toggle_sonido = true
+                getE('sonido-btn').className = 'sonido-on'
+                background_mp3.play()
+            }else{
+                toggle_sonido = false
+                getE('sonido-btn').className = 'sonido-off'
+                background_mp3.pause()
+            }
         }
     </script>
 </body>

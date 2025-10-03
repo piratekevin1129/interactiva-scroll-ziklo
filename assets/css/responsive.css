@@ -1,0 +1,151 @@
+@media (max-width: 846px){
+    html,body{
+        width: 845px;
+        height: 507px;
+    }
+
+    #title{
+        height: 17%;
+    }
+    #title h1{
+        padding: 0px 20px;
+        font-size: 21px;
+    }
+
+    #content{
+        height: 83%;
+        padding: 10px;
+        padding-top: 0px;
+    }
+
+    #col1{
+        width: 150px;
+    }
+
+    #cinta-top-btn,
+    #cinta-bottom-btn{
+        width: 20px;
+        height: 20px;
+    }
+
+    #cinta-wrap{
+        height: auto;
+        height: calc(100% - 40px);
+        height: -moz-calc(100% - 40px);
+    }
+    #cinta-wrap-sombra-1,
+    #cinta-wrap-sombra-2{
+        width: 92%;
+        height: 5px;
+        left: 4%;
+    }
+    #cinta-wrap-sombra-1{
+        top: -10px;
+        box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+    }
+    #cinta-wrap-sombra-2{
+        top: 100%;
+        box-shadow: 0px -10px 5px 0px rgba(0,0,0,0.5);
+    }
+    #cinta-wrapper{
+        padding: 15px 0px;
+    }
+    #cinta-wrapper > div{
+        width: 150px;
+        height: 100px;
+    }
+
+    .cinta-item-picture{
+        width: 100%;
+        width: calc(100% - 15px);
+        width: -moz-calc(100% - 15px);
+        height: 100%;
+        height: calc(100% - 15px);
+        height: -moz-calc(100% - 15px);
+        border: #fff solid 2px;
+    }
+    .cinta-item-active .cinta-item-picture,
+    .cinta-item-picture:hover{
+        width: 100%;
+        width: calc(100% - 5px);
+        width: -moz-calc(100% - 5px);
+        height: 100%;
+        height: calc(100% - 5px);
+        height: -moz-calc(100% - 5px);
+    }
+
+    #cinta-tooltip{
+        width: 180px;
+        padding: 10px;
+    }
+    
+    #cinta-tooltip p{
+        font-size: 14px;
+    }
+                                
+    #col2{
+        width: auto;
+        width: calc(100% - (150px + 20px));
+        width: -moz-calc(100% - (150px + 20px));
+    }
+
+    #picture-img{
+        border: #fff solid 3px;
+    }
+    
+    #modal-box{
+        width: auto;
+        width: calc(100% - 50px);
+        width: -moz-calc(100% - 50px);
+    }
+    
+    #modal-header p{
+        padding: 7px;
+        
+        font-size: 14px;
+    }
+
+    #modal-body{
+        padding: 12px;
+    }
+
+    #modal-body-txt1,
+    #modal-body-txt2,
+    #modal-body-txt3{
+        padding: 5px 12px;
+    }
+
+    #modal-body-txt1 p,
+    #modal-body-txt2 p,
+    #modal-body-txt3 p{
+        font-size: 14px;
+    }
+
+    #modal-body-txt2 ul li{
+        padding-left: 18px;
+        background-size: 15px 15px;
+
+        font-size: 14px;
+    }
+
+    #botones{
+        width: 80px;
+        top: 10px;
+        right: 10px;
+    }
+
+    #next-tema-btn,
+    #sonido-btn{
+        width: 35px;
+        height: 35px;
+    }
+
+    #next-tema-btn::after,
+    #sonido-btn::after{
+        width: 25px;
+        height: 25px;
+        top: 5px;
+        left: 5px;
+    }
+
+}
