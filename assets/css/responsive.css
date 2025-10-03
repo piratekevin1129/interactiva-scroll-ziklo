@@ -92,6 +92,18 @@
     #picture-img{
         border: #fff solid 3px;
     }
+
+    #picture-info-btn{
+        width: 35px;
+        height: 35px;
+    }
+
+    #picture-info-btn::after{
+        width: 25px;
+        height: 25px;
+        top: 5px;
+        left: 5px;
+    }
     
     #modal-box{
         width: auto;

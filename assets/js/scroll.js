@@ -10,24 +10,33 @@ function moveScroll(event){
     var percent_rango = (rango * percent) / 100
     
     final_y = 0 - percent_rango
+    
 }
 
+var out_scroll = true;
 function outScroll(){
     getE('cinta-top-btn').className = ''
     getE('cinta-bottom-btn').className = ''
+    out_scroll = true;
+}
+
+function overSCroll(){
+    out_scroll = false;
 }
 
 function activateSCroll(){
     animacion_scroll = setInterval(function(){
         var pos = getY(getE('cinta-wrapper').style.top)
         
-        //mirar si arriba o abajo
-        if(final_y<pos){
-            getE('cinta-top-btn').className = ''
-            getE('cinta-bottom-btn').className = 'cinta-bottom-btn-active'
-        }else{
-            getE('cinta-top-btn').className = 'cinta-top-btn-active'
-            getE('cinta-bottom-btn').className = ''
+        if(out_scroll==false){
+            //mirar si arriba o abajo
+            if(final_y<pos){
+                getE('cinta-top-btn').className = ''
+                getE('cinta-bottom-btn').className = 'cinta-bottom-btn-active'
+            }else{
+                getE('cinta-top-btn').className = 'cinta-top-btn-active'
+                getE('cinta-bottom-btn').className = ''
+            }
         }
         
         var dify = (pos - final_y) / 5

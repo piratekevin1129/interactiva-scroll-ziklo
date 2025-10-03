@@ -34,30 +34,20 @@
             </div>
             <div id="col2">
                 <div id="picture">
-                    <div id="picture-img" class="picture-img-on">
+                    <div id="picture-img" class="picture-img-off">
                         <img src="" />
                     </div>
-                    <!--<button id="picture-info-btn"></button>-->
+                    <button id="picture-info-btn" class="picture-info-btn-on" onclick="abrirModal(true)"></button>
                     <div id="modal" class="modal-off">
                         <div id="modal-box">
                             <div id="modal-header">
-                                <p><span>Peligro: </span> Accidentes de tránsito</p>
+                                <p id="modal-header-txt"></p>
+                                <button id="modal-cerrar-btn" onclick="cerrarModal(true)"></button>
                             </div>
                             <div id="modal-body">
-                                <div id="modal-body-txt1">
-                                    <p><span>Riesgo: </span>Lesiones graves o fatales debido a accidentes vehículos.</p>
-                                </div>
-                                <div id="modal-body-txt2">
-                                    <p>Medidas de control:</p>
-                                    <ul>
-                                        <li>Vehículos no autorizados y capacitación en conducción segura.</li>
-                                        <li>Uso de equipos de protección personal (EPP).</li>
-                                        <li>Supervisión de rutas de acceso.</li>
-                                    </ul>
-                                </div>
-                                <div id="modal-body-txt3">
-                                    <p><span>👤 Responsable:</span> Analista SST.</p>
-                                </div>
+                                <div id="modal-body-txt1"></div>
+                                <div id="modal-body-txt2"></div>
+                                <div id="modal-body-txt3"></div>
                             </div>
                         </div>
                     </div>
@@ -88,6 +78,7 @@
         var click_mp3 = null;
         var over_mp3 = null;
         var transicion_mp3 = null;
+        var intro_mp3 = null;
         
         window.onload = function(){
             loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data){
@@ -100,8 +91,12 @@
                         over_mp3 = data
                         loadTrack({src: 'assets/sounds/transicion.mp3', callBack: function(data){
                             transicion_mp3 = data
-                            
-                            loadItems()
+
+                            loadTrack({src: 'assets/audios/intro.mp3', callBack: function(data){
+                                intro_mp3 = data
+                                
+                                loadItems()
+                            }})
                         }})
                     }})
                 }})

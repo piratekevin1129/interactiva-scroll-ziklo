@@ -295,11 +295,10 @@ html,body{
     object-fit: cover;
 }
                         
-/*#picture-info-btn{
+#picture-info-btn{
     outline: none;
     outline-width: 0;
     position: absolute;
-    display: block;
     width: 45px;
     height: 45px;
     right: 10px;
@@ -324,7 +323,14 @@ html,body{
     -webkit-mask-image: url(../images/icon-informacion.svg);
     mask-size: 100%;
     -webkit-mask-size: 100%;
-}*/
+}
+
+.picture-info-btn-off{
+    display: none;
+}
+.picture-info-btn-on{
+    display: block;
+}
 
 #modal{
     position: absolute;
@@ -372,13 +378,20 @@ html,body{
     margin: 0px;
     background-color: #dc9a31;
     border-radius: 8px 8px 0px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 10px;
 }
 #modal-header p{
     display: block;
-    width: auto;
+    width: 100%;
+    width: calc(100% - 30px);
+    width: -moz-calc(100% - 30px);
     height: auto;
     margin: 0px;
-    padding: 10px;
     box-sizing: border-box;
     
     font-family: 'gotham_medium';
@@ -390,6 +403,41 @@ html,body{
 }
 #modal-header p span{
     font-family: 'gotham_bold';
+}
+#modal-cerrar-btn{
+    outline: none;
+    outline-width: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+#modal-cerrar-btn::after,
+#modal-cerrar-btn::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    top: 50%;
+    top: calc(50% - 1.5px);
+    top: -moz-calc(50% - 1.5px);
+    left: 0px;
+
+    transition: transform 0.2s;
+}
+#modal-cerrar-btn::after{
+    transform: rotate(45deg);
+}
+#modal-cerrar-btn::before{
+    transform: rotate(-45deg);
+}
+#modal-cerrar-btn:hover::after,
+#modal-cerrar-btn:hover::before{
+    transform: rotate(0deg);
 }
 
 #modal-body{

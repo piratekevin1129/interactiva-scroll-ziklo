@@ -43,14 +43,18 @@ var audios_fotos = []
 function loadItems(){
     if(load_item==items_data.length){
         getE('sonido-btn').setAttribute('onclick','clickSonido()')
+        
         setCintaItems()
+        setModalInfo()
+
         activateSCroll()
         getE('cinta-wrap').addEventListener('mousemove', moveScroll, true)
         getE('cinta-wrap').addEventListener('mouseleave', outScroll, true)
+        getE('cinta-wrap').addEventListener('mouseenter', overSCroll, true)
 
-        getE('picture-img').getElementsByTagName('img')[0].src = 'assets/fotos/'+items_data[0].id+'.jpg'
-        getE('cinta-item-'+items_data[0].id).className = 'cinta-item-active'
         unsetLoader()
+        intro_mp3.play()
+        clickSonido()
     }else{
         loadItem()
     }
@@ -58,7 +62,7 @@ function loadItems(){
 
 
 function loadItem(){
-    loadImg({src:'assets/fotos/'+items_data[load_item].id+'.jpg', callBack: function(){
+    loadImg({src:'assets/fotos/'+items_data[load_item].id+'.'+items_data[load_item].tipo, callBack: function(){
         loadTrack({src: 'assets/audios/'+items_data[load_item].id+'.mp3', callBack: function(data){
             audios_fotos.push(data)
             load_item++
@@ -73,7 +77,7 @@ function setCintaItems(){
         var div_item = document.createElement('div')
         div_item.id = 'cinta-item-'+items_data[i].id
         div_item.className = 'cinta-item'
-        div_item.innerHTML = '<div class="cinta-item-picture" onclick="clickCintaItem('+i+')" onmouseenter="overCintaItem('+i+')" onmouseleave="outCintaItem('+i+')"><img src="assets/fotos/'+items_data[i].id+'.jpg" /></div>'
+        div_item.innerHTML = '<div class="cinta-item-picture" onclick="clickCintaItem('+i+')" onmouseenter="overCintaItem('+i+')" onmouseleave="outCintaItem('+i+')"><img src="assets/fotos/'+items_data[i].id+'.'+items_data[i].tipo+'" /></div>'
 
         getE('cinta-wrapper').appendChild(div_item)
     }
@@ -94,42 +98,77 @@ function outCintaItem(ite){
 var click_item = 0
 var animacion_click_item = null
 var animating_click_item = false
+var modal_status = 'closed'
 
 function clickCintaItem(ite){
+    intro_mp3.pause()
     if(!animating_click_item){
-        animating_click_item = true
+        if(modal_status=='opened'){
+            animating_click_item = true
+            getE('picture-img').className = 'picture-img-off'
+            getE('cinta-item-'+items_data[click_item].id).removeAttribute('class')
+            getE('picture-info-btn').className = 'picture-info-btn-off'
+            cerrarModal(false)
 
-        getE('cinta-item-'+items_data[click_item].id).removeAttribute('class')
-        audios_fotos[click_item].pause()
-        getE('modal').className = 'modal-off'
-        getE('picture-img').className = 'picture-img-off'
-        click_mp3.play()
+            animacion_click_item = setTimeout(function(){
+                clearTimeout(animacion_click_item)
+                animacion_click_item = null
+                animating_click_item = false
 
-        animacion_click_item = setTimeout(function(){
-            clearTimeout(animacion_click_item)
-            animacion_click_item = null
-    
+                click_item = ite
+                setModalInfo()
+                abrirModal(false)
+            },1000)
+        }else{
+            getE('picture-img').className = 'picture-img-off'
+            getE('cinta-item-'+items_data[click_item].id).removeAttribute('class')
+            getE('picture-info-btn').className = 'picture-info-btn-off'
+            
             click_item = ite
-            getE('picture-img').getElementsByTagName('img')[0].src = 'assets/fotos/'+items_data[ite].id+'.jpg'
-            getE('cinta-item-'+items_data[ite].id).className = 'cinta-item-active'
+            setModalInfo()
+            abrirModal(false)
+        }
 
-            getE('modal-body-txt1').innerHTML = '<p><span>Riesgo: </span>'+items_data[ite].riesgo+'</p>'
-            var txt2 = "<p>Medidas de control:</p>"
-            txt2+='<ul>'
-            for(i = 0;i<items_data[ite].medidas.length;i++){
-                txt2+='<li>'+items_data[ite].medidas[i]+'</li>'
-            }
-            txt2+='</ul>'
-            getE('modal-body-txt2').innerHTML = txt2
-            getE('modal-body-txt1').innerHTML = '<p><span>👤 Responsable:</span> '+items_data[i].responsable+'</p>'
-    
-            getE('modal').className = 'modal-on'
-            getE('picture-img').className = 'picture-img-on'
-            animating_click_item = false
-
-            audios_fotos[ite].currentTime = 0
-            audios_fotos[ite].play()
-            transicion_mp3.play()
-        },1000)
+        click_mp3.play()
     }
+}
+
+function setModalInfo(info){
+    getE('cinta-item-'+items_data[click_item].id).className = 'cinta-item-active'
+    getE('picture-img').getElementsByTagName('img')[0].src = 'assets/fotos/'+items_data[click_item].id+'.'+items_data[click_item].tipo
+    getE('picture-img').className = 'picture-img-on'
+
+    getE('modal-header-txt').innerHTML = '<span>Peligro: </span> '+items_data[click_item].peligro
+    getE('modal-body-txt1').innerHTML = '<p><span>Riesgo: </span>'+items_data[click_item].riesgo+'</p>'
+    var txt2 = "<p>Medidas de control:</p>"
+    txt2+='<ul>'
+    for(i = 0;i<items_data[click_item].medidas.length;i++){
+        txt2+='<li>'+items_data[click_item].medidas[i]+'</li>'
+    }
+    txt2+='</ul>'
+    getE('modal-body-txt2').innerHTML = txt2
+    getE('modal-body-txt3').innerHTML = '<p><span>👤 Responsable:</span> '+items_data[click_item].responsable+'</p>'
+}
+
+function cerrarModal(btn){
+    getE('modal').className = 'modal-off'
+    modal_status = 'closed'
+
+    if(btn){
+        getE('picture-info-btn').className = 'picture-info-btn-on'
+    }
+
+    audios_fotos[click_item].pause()
+}
+function abrirModal(btn){
+    getE('modal').className = 'modal-on'
+    modal_status = 'opened'
+
+    if(btn){
+        getE('picture-info-btn').className = 'picture-info-btn-off'
+    }
+
+    audios_fotos[click_item].currentTime = 0
+    audios_fotos[click_item].play()
+    transicion_mp3.play()
 }
