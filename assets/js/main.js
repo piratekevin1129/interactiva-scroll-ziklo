@@ -63,7 +63,9 @@ function loadItems(){
 
 function loadItem(){
     loadImg({src:'assets/fotos/'+items_data[load_item].id+'.'+items_data[load_item].tipo, callBack: function(){
+        loaderUpdate()
         loadTrack({src: 'assets/audios/'+items_data[load_item].id+'.mp3', callBack: function(data){
+            loaderUpdate()
             audios_fotos.push(data)
             load_item++
             loadItems()
