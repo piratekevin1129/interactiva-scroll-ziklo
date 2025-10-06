@@ -158,7 +158,7 @@ html,body{
     height: auto;
     left: 0px;
     box-sizing: border-box;
-    padding: 20px 0px;
+    padding: 50px 0px;
 }
 #cinta-wrapper > div{
     position: relative;
@@ -217,6 +217,7 @@ html,body{
     border-radius: 4px;
     background-color: #fdf3df;
     left: 100%;
+    top: initial;
     transform: translateY(-50%);
     z-index: 1;
 
@@ -227,6 +228,7 @@ html,body{
     position: absolute;
     width: 0px;
     height: 0px;
+    border-left: none;
     border-right: #fdf3df solid 10px;
     border-top: rgba(255,255,255,0) solid 5px;
     border-bottom: rgba(255,255,255,0) solid 5px;
