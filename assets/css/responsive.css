@@ -106,6 +106,10 @@
         width: calc(100% - 50px);
         width: -moz-calc(100% - 50px);
     }
+
+    #modal-header{
+        padding: 5px 10px;
+    }
     
     #modal-header p{
         padding: 7px;
@@ -168,7 +172,7 @@
         height: auto;
     }
     #title h1{
-        padding: 20px 20px;
+        padding: 10px 100px;
         font-size: 18px;
     }
 
@@ -201,11 +205,16 @@
         height: 100%;
         top: 0px;
     }
-    #cinta-wrap-sombra-1 img,
-    #cinta-wrap-sombra-2 img{
+    #cinta-wrap-sombra-1 img:last-child,
+    #cinta-wrap-sombra-2 img:last-child{
+        display: block;
         width: auto;
         height: 100%;
         margin: 0px;
+    }
+    #cinta-wrap-sombra-1 img:first-child,
+    #cinta-wrap-sombra-2 img:first-child{
+        display: none;
     }
 
     #cinta-wrap-sombra-1{
@@ -264,7 +273,20 @@
     
     #modal-header p{
         padding: 5px;
-        font-size: 14px;
+        font-size: 12px;
+    }
+
+    #modal-cerrar-btn{
+        width: 20px;
+        height: 20px;
+    }
+    #modal-cerrar-btn::after,
+    #modal-cerrar-btn::before{
+        width: 20px;
+        height: 2px;
+        top: 50%;
+        top: calc(50% - 1px);
+        top: -moz-calc(50% - 1px);
     }
 
     #modal-body{
@@ -275,6 +297,23 @@
     #modal-body-txt2,
     #modal-body-txt3{
         padding: 5px 10px;
+    }
+
+    #modal-body-txt2{
+        margin: 5px 0px;
+    }
+
+    #modal-body-txt1 p,
+    #modal-body-txt2 p,
+    #modal-body-txt3 p{
+        font-size: 12px;
+    }
+
+    #modal-body-txt2 ul li{
+        padding-left: 15px;
+        background-size: 12px 12px;
+
+        font-size: 12px;
     }
 
     #botones{

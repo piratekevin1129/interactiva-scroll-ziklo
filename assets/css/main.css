@@ -143,12 +143,16 @@ html,body{
     height: auto;
     left: 0px;
 }
-#cinta-wrap-sombra-1 img,
-#cinta-wrap-sombra-2 img{
+#cinta-wrap-sombra-1 img:first-child,
+#cinta-wrap-sombra-2 img:first-child{
     display: block;
     width: 95%;
     height: auto;
     margin: 0px auto;
+}
+#cinta-wrap-sombra-1 img:last-child,
+#cinta-wrap-sombra-2 img:last-child{
+    display: none;
 }
 #cinta-wrap-sombra-1{
     top: 40px;
