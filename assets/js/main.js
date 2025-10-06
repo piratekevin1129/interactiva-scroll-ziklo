@@ -49,13 +49,12 @@ function loadItems(){
 
         if(window.innerWidth>575){
             activateSCroll()
-            getE('cinta-wrap').addEventListener('mousemove', moveScroll, true)
-            getE('cinta-wrap').addEventListener('mouseleave', outScroll, true)
-            getE('cinta-wrap').addEventListener('mouseenter', overSCroll, true)
+            getE('cinta').addEventListener('mousemove', moveScroll, true)
+            getE('cinta').addEventListener('mouseleave', outScroll, true)
+            getE('cinta').addEventListener('mouseenter', overSCroll, true)
         }else{
             var picture_img_height = (getE('picture-img').getBoundingClientRect().width * 66.66) / 100
             getE('picture-img').style.height = picture_img_height+'px'
-
             getE('cinta-wrapper').style.width = (130 * items_data.length)+'px'
         }
 

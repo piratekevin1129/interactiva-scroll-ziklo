@@ -2,15 +2,14 @@ var animacion_scroll = null;
 var final_y = 0;
 
 function moveScroll(event){
-    var mousey = event.pageY - getE('cinta-wrap').getBoundingClientRect().top
+    var mousey =  (event.pageY) - getE('cinta').getBoundingClientRect().top
     //console.log(mousey)
-    var percent = (mousey * 100) / getE('cinta-wrap').getBoundingClientRect().height
+    var percent = (mousey * 100) / getE('cinta').getBoundingClientRect().height
 
     var rango = getE('cinta-wrapper').getBoundingClientRect().height - getE('cinta-wrap').getBoundingClientRect().height
     var percent_rango = (rango * percent) / 100
     
     final_y = 0 - percent_rango
-    
 }
 
 var out_scroll = true;

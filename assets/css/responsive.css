@@ -33,22 +33,18 @@
         height: calc(100% - 40px);
         height: -moz-calc(100% - 40px);
     }
-    #cinta-wrap-sombra-1,
-    #cinta-wrap-sombra-2{
-        width: 92%;
-        height: 5px;
-        left: 4%;
-    }
+    
     #cinta-wrap-sombra-1{
-        top: -10px;
-        box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+        top: 20px;
     }
     #cinta-wrap-sombra-2{
         top: 100%;
-        box-shadow: 0px -10px 5px 0px rgba(0,0,0,0.5);
+        top: calc(100% - 20px);
+        top: -moz-calc(100% - 20px);
     }
+
     #cinta-wrapper{
-        padding: 30px 0px;
+        padding: 20px 0px;
     }
     #cinta-wrapper > div{
         width: 150px;
@@ -201,18 +197,25 @@
     }
     #cinta-wrap-sombra-1,
     #cinta-wrap-sombra-2{
-        width: 5px;
-        height: 98%;
-        top: 1%;
+        width: auto;
+        height: 100%;
+        top: 0px;
     }
+    #cinta-wrap-sombra-1 img,
+    #cinta-wrap-sombra-2 img{
+        width: auto;
+        height: 100%;
+        margin: 0px;
+    }
+
     #cinta-wrap-sombra-1{
-        left: -5px;
-        box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.5);
+        left: 0px;
     }
     #cinta-wrap-sombra-2{
         left: 100%;
-        box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.5);
+        transform: translateX(-100%);
     }
+
     #cinta-wrapper{
         height: 80px;
         width: auto;
@@ -229,21 +232,7 @@
     }
 
     #cinta-tooltip{
-        width: 150px;
-        padding: 10px;
-        top: 0% !important;
-        left: initial;
-        transform: translateY(-100%);
-    }   
-    #cinta-tooltip::after{
-        border-bottom: none;
-        border-top: #fdf3df solid 10px;
-        border-right: rgba(255,255,255,0) solid 5px;
-        border-left: rgba(255,255,255,0) solid 5px;
-        top: 99.9%;
-        left: 50%;
-        left: calc(50% - 5px);
-        left: -moz-calc(50% - 5px);
+        display: none !important;
     }
                                 
     #col2{
